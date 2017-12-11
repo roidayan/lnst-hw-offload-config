@@ -7,10 +7,31 @@ vms="reg-r-vrt-019-001-002 reg-r-vrt-019-001-003"
 
 ##############################################################################
 
-function set_modes() {
-    local pci=$(basename `readlink /sys/class/net/$nic/device`)
-    devlink dev eswitch set pci/$pci inline-mode transport
-#    devlink dev eswitch set pci/$pci encap yes
+
+if [ `uname -r` = "3.10.0" ];  then
+    backport_centos_7_2=1
+elif [ `uname -r` = "3.10.0-327.el7.x86_64" ]; then
+    backport_centos_7_2=1
+fi
+
+function set_mode() {
+    local pci=$(basename `readlink /sys/class/net/$1/device`)
+
+    if [ "$backport_centos_7_2" = 1 ]; then
+        echo $2 > /sys/kernel/debug/mlx5/$pci/compat/mode
+        return
+    fi
+    devlink dev eswitch set pci/$pci mode $2
+}
+
+function set_eswitch_inline_mode() {
+    local pci=$(basename `readlink /sys/class/net/$1/device`)
+
+    if [ "$backport_centos_7_2" = 1 ]; then
+        echo $2 > /sys/kernel/debug/mlx5/$pci/compat/inline
+    else
+        devlink dev eswitch set pci/$pci inline-mode $2
+    fi
 }
 
 function reset_tc_nic() {
@@ -43,7 +64,7 @@ function stop_sriov() {
 
     for n in $nic $nic2 ; do
         sriov=/sys/class/net/$n/device/sriov_numvfs
-        /labhome/roid/scripts/ovs/devlink-mode.sh $n legacy
+        set_mode $n legacy
         if [ -e $sriov ]; then
             echo 0 > $sriov
         fi
@@ -113,13 +134,19 @@ function warn_extra() {
 function reload_modules() {
     echo "Reload modules"
     set -e
-    local modules="mlx5_ib mlx5_core devlink cls_flower"
+    local modules="mlx5_ib mlx5_core cls_flower"
+
+    if [ "$backport_centos_7_2" != 1 ]; then
+	modules="$modules devlink"
+    fi
+
     for m in $modules ; do
         warn_extra $m
     done
     modprobe -r $modules ; modprobe -a $modules
     set +e
 }
+
 
 function nic_up() {
     echo "Nic up"
@@ -157,14 +184,15 @@ reset_tc
 
 echo "Change mode to switchdev"
 unbind
-/labhome/roid/scripts/ovs/devlink-mode.sh $nic switchdev
+set_mode $nic switchdev
+set_eswitch_inline_mode $nic transport
 if [ "$NICS" != "2" ]; then
-    /labhome/roid/scripts/ovs/devlink-mode.sh $nic2 switchdev
+    set_mode $nic2 switchdev
+    set_eswitch_inline_mode $nic2 transport
 fi
 sleep 2
 nic_up
 reset_tc
-set_modes
 
 if [ "$WITH_VMS" == "1" ]; then
     start_vms
