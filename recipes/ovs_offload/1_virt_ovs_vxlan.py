@@ -2,6 +2,7 @@ from lnst.Controller.Task import ctl
 from lnst.RecipeCommon.ModuleWrap import ping, ping6
 from Testlib import Testlib
 import logging
+import netifaces
 
 # ------
 # SETUP
@@ -54,11 +55,9 @@ def do_pings():
 def get_vxlan_dev(host):
     vxlan_port = ctl.get_alias("vxlan_port")
     vxlan_dev = "vxlan_sys_%s" % vxlan_port
-    # in asap mlnx ofed the interface name is dummy_port.
+    # In asap mlnx ofed the interface name is dummy_port.
     vxlan_dummy = "dummy_%s" % vxlan_port
-    cmd = host.run("ip l show dev %s" % vxlan_dev)
-    out = cmd.out().strip()
-    if not out:
+    if not vxlan_dev in netifaces.interfaces():
         vxlan_dev = vxlan_dummy
     return vxlan_dev
 
