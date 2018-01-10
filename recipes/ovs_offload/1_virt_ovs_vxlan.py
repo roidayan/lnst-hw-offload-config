@@ -54,11 +54,13 @@ def do_pings():
 def get_vxlan_dev(host):
     vxlan_port = ctl.get_alias("vxlan_port")
     vxlan_dev = "vxlan_sys_%s" % vxlan_port
-    # in asap mlnx ofed the interface name is dummy_port.
+    # In asap mlnx ofed the interface name is dummy_port.
     vxlan_dummy = "dummy_%s" % vxlan_port
-    cmd = host.run("ip l show dev %s" % vxlan_dev)
+
+    # ip link output of all interfaces of type 'vxlan'
+    cmd = host.run("ip link show type vxlan")
     out = cmd.out().strip()
-    if not out:
+    if not vxlan_dev in out:
         vxlan_dev = vxlan_dummy
     return vxlan_dev
 
