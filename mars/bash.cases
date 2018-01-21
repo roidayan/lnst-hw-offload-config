@@ -439,6 +439,22 @@
         </cmd>
     </case>
     <case>
+<!--
+        <ignore>
+            <bug> 1223798 </bug>
+        </ignore>
+-->
+        <tags> vf </tags>
+        <tags> vf-veth-fwd </tags>
+        <name> test-vf-veth-fwd.sh </name>
+        <cmd>
+            <params>
+                <test> test-vf-veth-fwd.sh </test>
+                <option> TIMEOUT=2000 ROUNDS=200 </option>
+            </params>
+        </cmd>
+    </case>
+    <case>
         <tags> vxlan </tags>
         <name> test-vxlan-port-del.sh </name>
         <cmd>
