@@ -204,6 +204,17 @@
         </cmd>
     </case>
     <case>
+        <tags> ovs </tags>
+        <tags> vxlan </tags>
+        <tags> vxlan-tc-hw </tags>
+        <name> test-ovs-vxlan-in-ns-hw.sh </name>
+        <cmd>
+            <params>
+                <test> test-ovs-vxlan-in-ns-hw.sh </test>
+            </params>
+        </cmd>
+    </case>
+    <case>
         <ignore>
             <bug> 1123491 </bug>
         </ignore>
@@ -403,6 +414,31 @@
         <cmd>
             <params>
                 <test> test-vf-vf-ping.sh </test>
+            </params>
+        </cmd>
+    </case>
+    <case>
+        <ignore>
+            <bug> 1251244 </bug>
+        </ignore>
+        <tags> vf </tags>
+        <name> test-vf-vf-iperf.sh </name>
+        <cmd>
+            <params>
+                <test> test-vf-vf-iperf.sh </test>
+            </params>
+        </cmd>
+    </case>
+    <case>
+        <ignore>
+            <bug> 1251244 </bug>
+        </ignore>
+        <tags> vf </tags>
+        <name> test-vf-vf-iperf.sh mutlipath enabled </name>
+        <cmd>
+            <params>
+                <test> test-vf-vf-iperf.sh </test>
+                <option> MULTIPATH=1 </option>
             </params>
         </cmd>
     </case>
