@@ -36,6 +36,7 @@
 
     <case>
         <tags> vlan </tags>
+	<tags> vlan_in_host </tags>
         <name> vlan_in_host </name>
         <cmd>
              <params>
@@ -46,6 +47,7 @@
 
     <case>
         <tags> vxlan </tags>
+	<tags> 1_virt_ovs_vxlan </tags>
         <name> 1_virt_ovs_vxlan </name>
         <cmd>
              <params>
@@ -56,6 +58,7 @@
 
     <case>
         <tags> vxlan </tags>
+	<tags> 1_virt_ovs_vxlan </tags>
         <name> 1_virt_ovs_vxlan tunnel key 0 </name>
         <cmd>
              <params>
@@ -67,7 +70,7 @@
 
     <case>
         <tags> vxlan </tags>
-        <tags> stacked </tags>
+        <tags> 1_virt_ovs_vxlan_stacked </tags>
         <name> 1_virt_ovs_vxlan_stacked </name>
         <cmd>
              <params>
@@ -77,12 +80,13 @@
     </case>
 
     <case>
-        <ignore>
+	<!-- <ignore>
             <bug> 1092855 </bug>
             <bug> 1134557 </bug>
-        </ignore>
+        </ignore> -->
         <tags> vxlan </tags>
         <tags> vxlan_ipv6 </tags>
+        <tags> 1_virt_ovs_vxlan_ipv6 </tags>
         <name> 1_virt_ovs_vxlan_ipv6 </name>
         <cmd>
             <params>
@@ -93,6 +97,7 @@
 
     <case>
         <tags> vxlan </tags>
+	<tags> 1_virt_ovs_vxlan_flow_key </tags>
         <name> 1_virt_ovs_vxlan_flow_key </name>
         <cmd>
             <params>
@@ -102,11 +107,12 @@
     </case>
 
     <case>
-        <ignore>
+        <!-- <ignore>
             <bug> 1147629 </bug>
-        </ignore>
+        </ignore> -->
         <tags> vxlan </tags>
         <tags> tables </tags>
+	<tags> 1_virt_ovs_vxlan_tables </tags>
         <name> 1_virt_ovs_vxlan_tables </name>
         <cmd>
             <params>
@@ -118,7 +124,8 @@
     <case>
         <tags> vxlan </tags>
         <tags> tables </tags>
-        <name> 1_virt_ovs_vxlan_tables2 </name>
+        <tags> 1_virt_ovs_vxlan_tables2 </tags>
+	<name> 1_virt_ovs_vxlan_tables2 </name>
         <cmd>
             <params>
                 <recipe> 1_virt_ovs_vxlan_tables2.xml </recipe>
@@ -129,6 +136,7 @@
     <case>
         <tags> vxlan </tags>
         <tags> tables </tags>
+        <tags> 1_virt_ovs_vxlan_tables3 </tags>
         <name> 1_virt_ovs_vxlan_tables3 </name>
         <cmd>
             <params>
@@ -140,7 +148,7 @@
     <case>
         <tags> vxlan </tags>
         <tags> vxlan_ipv6 </tags>
-        <tags> 2_virt_vxlan_ipv6 </tags>
+        <tags> 2_virt_ovs_vxlan_ipv6 </tags>
         <name> 2_virt_ovs_vxlan_ipv6</name>
         <cmd>
             <params>
@@ -152,7 +160,7 @@
     <case>
         <tags> vxlan </tags>
         <tags> vxlan_ipv6 </tags>
-        <tags> 2_virt_vxlan_ipv6 </tags>
+        <tags> 2_virt_ovs_vxlan_ipv6 </tags>
         <name> 2_virt_ovs_vxlan_ipv6 non-default vxlan port</name>
         <cmd>
             <params>
@@ -163,10 +171,11 @@
     </case>
 
     <case>
-        <ignore>
+        <!-- <ignore>
             <bug> 1048140 </bug>
-        </ignore>
+        </ignore> -->
         <tags> vxlan </tags>
+        <tags> 1_virt_ovs_vxlan_up_down </tags>
         <name> 1_virt_ovs_vxlan_up_down </name>
         <cmd>
              <params>
@@ -186,9 +195,9 @@
     </case>
 
     <case>
-        <ignore>
+        <!-- <ignore>
             <bug> 1126868 </bug>
-        </ignore>
+        </ignore> -->
         <tags> rdma </tags>
         <name> basic_rdma </name>
         <cmd>
