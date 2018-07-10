@@ -442,7 +442,7 @@
                     <value> [ASAP_DIRECT, ASAP_UPSTREAM] </value>
                 </condition>
             </condition_group>
-            <condition_group>
+            <!-- <condition_group>
                 <operand> AND </operand>
                 <bug> 1340238 </bug>
                 <condition>
@@ -450,7 +450,7 @@
                     <op> in </op>
                     <value> [ASAP_MLNX_OFED_4_2] </value>
                 </condition>
-            </condition_group>
+            </condition_group> -->
             <condition_group>
                 <operand> AND </operand>
                 <bug> 1362172 </bug>
@@ -678,7 +678,7 @@
         </cmd>
     </case>
     <case>
-        <ignore>
+        <!--<ignore>
             <condition_group>
                 <operand> AND </operand>
                 <bug> 1278642 </bug>
@@ -688,7 +688,7 @@
                     <value> [ASAP_MLNX_OFED_4_2] </value>
                 </condition>
             </condition_group>
-        </ignore>
+        </ignore>-->
         <tags> tc </tags>
         <tags> tc-del-a-lot </tags>
         <name> test-tc-del-a-lot.sh </name>
@@ -945,7 +945,7 @@
                     <value> [ASAP_DIRECT, ASAP_UPSTREAM] </value>
                 </condition>
             </condition_group>
-            <condition_group>
+            <!--<condition_group>
                 <operand> AND </operand>
                 <bug> 1279755 </bug>
                 <condition>
@@ -953,7 +953,7 @@
                     <op> in </op>
                     <value> [ASAP_MLNX_OFED_4_2] </value>
                 </condition>
-            </condition_group>
+            </condition_group> -->
             <condition_group>
                 <operand> AND </operand>
                 <bug> 1370308 </bug>
@@ -966,6 +966,7 @@
         </ignore>
         <tags> tc </tags>
         <tags> tc-max-rules </tags>
+        <tags> max_rules_index0 </tags>
         <name> test-tc-max-rules.sh </name>
         <tout> 900 </tout>
         <cmd>
@@ -1032,7 +1033,7 @@
                     <value> [ASAP_DIRECT, ASAP_UPSTREAM] </value>
                 </condition>
             </condition_group>
-            <condition_group>
+            <!--<condition_group>
                 <operand> AND </operand>
                 <bug> 1279755 </bug>
                 <condition>
@@ -1040,7 +1041,7 @@
                     <op> in </op>
                     <value> [ASAP_MLNX_OFED_4_2] </value>
                 </condition>
-            </condition_group>
+            </condition_group>-->
             <condition_group>
                 <operand> AND </operand>
                 <bug> 1370308 </bug>
@@ -1216,7 +1217,7 @@
         </cmd>
     </case>
     <case>
-        <ignore>
+	<!--<ignore>
             <condition_group>
                 <operand> AND </operand>
                 <bug> 1294281 </bug>
@@ -1226,7 +1227,7 @@
                     <value> [ASAP_MLNX_OFED_4_2] </value>
                 </condition>
             </condition_group>
-        </ignore>
+        </ignore>-->
         <tags> tc </tags>
         <tags> tc-shuffle </tags>
         <tags> tc-shuffle-cls_api </tags>
