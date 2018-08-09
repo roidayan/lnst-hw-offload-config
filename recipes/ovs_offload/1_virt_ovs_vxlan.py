@@ -64,10 +64,10 @@ def get_vxlan_dev(host):
     cmd = host.run("ls /sys/class/net")
     out = cmd.out().strip().split()
 
-    if vxlan_dev in out:
-        return vxlan_dev
-    elif vxlan_dummy in out:
+    if vxlan_dummy in out:
         return vxlan_dummy
+    elif vxlan_dev in out:
+        return vxlan_dev
     else:
         raise RuntimeError("Cannot find vxlan device")
 
