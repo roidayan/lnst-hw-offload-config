@@ -204,10 +204,11 @@
         <tags> vf </tags>
         <tags> vf-vf-fwd </tags>
         <name> test-vf-vf-fwd.sh </name>
+        <tout> 900 </tout>
         <cmd>
             <params>
                 <test> test-vf-vf-fwd.sh </test>
-                <option> TIMEOUT=120,ROUNDS=10 </option>
+                <option> ROUNDS=10 </option>
             </params>
         </cmd>
     </case>
@@ -239,10 +240,11 @@
         <tags> vf </tags>
         <tags> vf-veth-fwd </tags>
         <name> test-vf-veth-fwd.sh </name>
+        <tout> 900 </tout>
         <cmd>
             <params>
                 <test> test-vf-veth-fwd.sh </test>
-                <option> TIMEOUT=120,ROUNDS=10 </option>
+                <option> ROUNDS=10 </option>
             </params>
         </cmd>
     </case>
