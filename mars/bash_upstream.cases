@@ -129,10 +129,11 @@
         <tags> vf </tags>
         <tags> vf-vf-fwd </tags>
         <name> test-vf-vf-fwd.sh </name>
+        <tout> 900 </tout>
         <cmd>
             <params>
                 <test> test-vf-vf-fwd.sh </test>
-                <option> TIMEOUT=120,ROUNDS=10 </option>
+                <option> ROUNDS=10 </option>
             </params>
         </cmd>
     </case>
@@ -150,7 +151,11 @@
         <ignore>
             <condition_group>
                 <operand> AND </operand>
-                <bug> 1486319 </bug>
+                <condition_group>
+                    <operand> OR </operand>
+                    <bug> 1486319 </bug>
+                    <bug> 1506933 </bug>
+                </condition_group>
                 <condition>
                     <key> PROJECT </key>
                     <op> in </op>
@@ -161,10 +166,11 @@
         <tags> vf </tags>
         <tags> vf-veth-fwd </tags>
         <name> test-vf-veth-fwd.sh </name>
+        <tout> 900 </tout>
         <cmd>
             <params>
                 <test> test-vf-veth-fwd.sh </test>
-                <option> TIMEOUT=120,ROUNDS=10 </option>
+                <option> ROUNDS=10 </option>
             </params>
         </cmd>
     </case>
